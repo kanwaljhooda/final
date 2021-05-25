@@ -28,14 +28,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     document.querySelector(`.landing-page`).innerHTML = `
       <div class="md:w-1/2 m-auto md:p-16">
-        <img class="rounded-xl" src="what-would-you-like-to-do.jpg">
+        <img class="rounded-xl" src="assets/what-would-you-like-to-do.jpg">
       </div>
       <div class="md:w-1/2 p-8 space-y-4">
         <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 touchpoint-tracker">View Touchpoint Tracker</button>
         <p>See upcoming touchpoints to continue building relationships</p>
         <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Add Contact(s)</button>
         <p>Yay for new friends!</p>
-        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 edit-contact">Edit Contact(s)</button>
+        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 edit-contact">View and Edit Contact(s)</button>
         <p>Relationships evolve and so must we</p>
       </div>
           `
