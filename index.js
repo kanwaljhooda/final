@@ -20,43 +20,75 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
           // Redirect to the home page
           document.location.href = `index.html`
-        })
+        })     
 
     // CODE FOR SIGNING OUT
 
-    // CODE FOR ROUTING TO 2 USER OPTIONS
-    
-        // Display the two main options
+    // DISPLAY LANDING PAGE
 
-        document.querySelector(`.main-options`).innerHTML = `
-          <button class="text-pink-500 underline touchpoint-tracker">Track Touchpoints</button>
-          
-          <button class="text-pink-500 underline contact-manager">Manage Contacts</button>
+    document.querySelector(`.landing-page`).innerHTML = `
+      <div class="md:w-1/2 m-auto md:p-16">
+        <img class="rounded-xl" src="what-would-you-like-to-do.jpg">
+      </div>
+      <div class="md:w-1/2 p-8 space-y-4">
+        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 touchpoint-tracker">View Touchpoint Tracker</button>
+        <p>See upcoming touchpoints to continue building relationships</p>
+        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Add Contact(s)</button>
+        <p>Yay for new friends!</p>
+        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 edit-contact">Edit Contact(s)</button>
+        <p>Relationships evolve and so must we</p>
+      </div>
           `
-        
-        // Get a reference for the Touchpoint Tracker button
-        let touchpointTrackerButton = document.querySelector(`.touchpoint-tracker`)
+    // DISPLAY LANDING PAGE
+    
+    // CODE FOR DIRECTING TO APPROPRIATE HTMLS
 
+        // TOUCHPOINT TRACKER PAGE
 
-        // Handle the Touchpoint Tracker button
-        touchpointTrackerButton.addEventListener(`click`, async function(event){
+            // Get a reference to the button
+            let touchpointTrackerButton = document.querySelector(`.touchpoint-tracker`)
 
-          // Redirect to the tracker page
-          document.location.href = `tracker.html`
+            //  Handle the button 
+            touchpointTrackerButton.addEventListener(`click`, function(event) {
+              
+              // Redirect to the HTML
+              document.location.href = `touchpoint-tracker.html`
 
-        })
-        
-        // Get a reference for the Contact Manager button
-        let contactManagerButton = document.querySelector(`.contact-manager`)
+            })     
 
-        // Handle the Touchpoint Tracker button
+        // TOUCHPOINT TRACKER PAGE
 
-        contactManagerButton.addEventListener(`click`, async function(event){
+        // ADD CONTACT PAGE
 
-          // Redirect to the tracker page
-          document.location.href = `contact.html`
+            // Get a reference to the button
+            let addContactButton = document.querySelector(`.add-contact`)
 
-        })
+            //  Handle the button 
+            addContactButton.addEventListener(`click`, function(event) {
+              
+              // Redirect to the HTML
+              document.location.href = `add-contact.html`
+
+            }) 
+
+        // ADD CONTACT PAGE
+
+        // EDIT CONTACT PAGE
+
+            // Get a reference to the button
+            let editContactButton = document.querySelector(`.edit-contact`)
+
+            //  Handle the button 
+            editContactButton.addEventListener(`click`, function(event) {
+              
+              // Redirect to the HTML
+              document.location.href = `edit-contact.html`
+
+            })
+
+        // EDIT CONTACT PAGE
+
+    // CODE FOR DIRECTING TO APPROPRIATE HTMLS
 
   } else {
     // Signed out
