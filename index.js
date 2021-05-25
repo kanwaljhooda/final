@@ -24,7 +24,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // CODE FOR SIGNING OUT
 
-    // DISPLAY LANDING PAGE
+    // UPDATE LANDING PAGE
 
     document.querySelector(`.landing-page`).innerHTML = `
       <div class="md:w-1/2 m-auto md:p-16">
@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <p>Relationships evolve and so must we</p>
       </div>
           `
-    // DISPLAY LANDING PAGE
+    // UPDATE LANDING PAGE
     
     // CODE FOR DIRECTING TO APPROPRIATE HTMLS
 

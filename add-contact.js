@@ -24,6 +24,37 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
       // CODE FOR SIGNING OUT
   
+      // UPDATE LANDING PAGE
+
+      document.querySelector(`.landing-page`).innerHTML = `
+      <form class="items-center">
+        <label class="block mt-4 font-semibold" for="name">Contact Name</label>
+        <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="name" name="name">
+
+        <label class="block mt-4 font-semibold" for="jamatkhana">Email</label>
+        <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="email" id="email" name="email">
+
+        <label class="block mt-4 font-semibold" for="commit">Phone Number</label>
+        <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="tel" id="phone" name="phone">
+
+        <label class="block mt-4 font-semibold" for="commit">Birthday</label>
+        <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="birthday" name="birthday">
+        
+        <label class="block mt-4 font-semibold" for="commit">Touchpoint Frequency</label>
+        <select class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="frequency" name="frequency">
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="annually">Annually</option>
+        </select>
+
+        <label class="block mt-4 font-semibold" for="commit">Notes</label>
+        <input class="p-2 mt-2 w-96 h-52 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="notes" name="notes">
+
+        <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Add Contact</button>
+      </form>`
+
+      // UPDATE LANDING PAGE
 
   
     } else {
