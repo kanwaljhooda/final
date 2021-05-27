@@ -44,6 +44,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           let laggingTouchpoints = await fetch(laggingUrl)
           let laggingContacts = await laggingTouchpoints.json()
           console.log(laggingContacts)
+          console.log(`Hello!`)
 
           // Loop through the lagging contacts to display them
           for (let lc=0; lc < laggingContacts.length; lc++){
