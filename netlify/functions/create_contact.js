@@ -26,8 +26,9 @@ exports.handler = async function(event) {
         email: email,
         phone: phone,
         birthday: birthday,
-        touchpointFrequency: frequency,
-        notes: notes
+        frequency: frequency,
+        notes: notes,
+        active: true
     })
 
     return {

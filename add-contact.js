@@ -80,9 +80,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
             // Fetch the url, wait for a response, store the response in memory
             let response = await fetch(url)
-            
+
         })
-      // PROCESS CONTACT CREATION VIA LAMBDA FUNCTION
+      // PROCESS CONTACT CREATION VIA API
 
   
     } else {
