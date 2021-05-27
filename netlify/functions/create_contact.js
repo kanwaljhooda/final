@@ -3,6 +3,13 @@ let firebase = require(`./firebase`)
 
 // For reference: /.netlify/functions/create_contact?userId=${user.uid}&name=${name}&email=${email}&phone=${phone}&birthday=${birthday}&frequency=${frequency}&notes=${notes}
 
+// Define function for adding days
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 exports.handler = async function(event) {
 
     // Get the querystring parameters and store in memory
@@ -13,6 +20,24 @@ exports.handler = async function(event) {
     let birthday = event.queryStringParameters.birthday
     let frequency = event.queryStringParameters.frequency
     let notes = event.queryStringParameters.notes
+    let lastTouchpoint = new Date()
+    let upcomingTouchpoint = lastTouchpoint
+    
+    if (frequency == "weekly") {
+        upcomingTouchpoint = upcomingTouchpoint.addDays(7)
+    }
+
+    else if (frequency == "monthly") {
+        upcomingTouchpoint = upcomingTouchpoint.addDays(30)
+    }
+
+    else if (frequency == "quarterly") {
+        upcomingTouchpoint = upcomingTouchpoint.addDays(90)
+    }
+
+    else if (frequency == "annually") {
+        let upcomingTouchpoint = upcomingTouchpoint.addDays(365)
+    }
 
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
@@ -28,7 +53,9 @@ exports.handler = async function(event) {
         birthday: birthday,
         frequency: frequency,
         notes: notes,
-        active: true
+        active: true,
+        lastTouchpoint: lastTouchpoint,
+        upcomingTouchpoint: upcomingTouchpoint
     })
 
     return {
