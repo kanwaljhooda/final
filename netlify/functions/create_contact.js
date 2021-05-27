@@ -14,21 +14,22 @@ exports.handler = async function(event) {
     let frequency = event.queryStringParameters.frequency
     let notes = event.queryStringParameters.notes
     let lastTouchpoint = firebase.firestore.FieldValue.serverTimestamp()
+    let upcomingTouchpoint = lastTouchpoint
     
     if (frequency == "weekly") {
-        let upcomingTouchpoint = lastTouchpoint + 7
+        upcomingTouchpoint = upcomingTouchpoint + 7
     }
 
     else if (frequency == "monthly") {
-        let upcomingTouchpoint = lastTouchpoint + 30
+        upcomingTouchpoint = upcomingTouchpoint + 30
     }
 
     else if (frequency == "quarterly") {
-        let upcomingTouchpoint = lastTouchpoint + 90
+        upcomingTouchpoint = upcomingTouchpoint + 90
     }
 
     else if (frequency == "annually") {
-        let upcomingTouchpoint = lastTouchpoint + 365
+        let upcomingTouchpoint = upcomingTouchpoint + 365
     }
 
     // Establish a connection to firebase in memory
