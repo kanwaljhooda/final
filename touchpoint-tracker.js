@@ -26,11 +26,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
       // UPDATE LANDING PAGE TITLE
 
-      document.querySelector(`.landing-page-title`).innerHTML = `
-      <div class="p-8 text-center space-y-4">
-        <p class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Welcome, ${user.displayName}</p>
-      </div>     
-      `
+      // document.querySelector(`.landing-page-title`).insertAdjacentHTML(`afterbegin`,`
+      // <hr>
+      // <div class="p-8 text-center space-y-4">
+      //   <p class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Welcome, ${user.displayName}</p>
+      // </div>     
+      // `)
 
       // UPDATE LANDING PAGE TITLE
       
@@ -54,7 +55,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.lagging-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,
-            `<h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-500">
+            `
+            
+            <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-500">
               <i class="fas fa-car-side"></i>
               <span>${laggingContact.name}</span>
             </h1>
