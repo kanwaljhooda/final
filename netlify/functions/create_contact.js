@@ -13,6 +13,23 @@ exports.handler = async function(event) {
     let birthday = event.queryStringParameters.birthday
     let frequency = event.queryStringParameters.frequency
     let notes = event.queryStringParameters.notes
+    let lastTouchpoint = firebase.firestore.FieldValue.serverTimestamp()
+    
+    if (frequency == "weekly") {
+        let upcomingTouchpoint = lastTouchpoint + 7
+    }
+
+    else if (frequency == "monthly") {
+        let upcomingTouchpoint = lastTouchpoint + 30
+    }
+
+    else if (frequency == "quarterly") {
+        let upcomingTouchpoint = lastTouchpoint + 90
+    }
+
+    else if (frequency == "annually") {
+        let upcomingTouchpoint = lastTouchpoint + 365
+    }
 
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
@@ -28,7 +45,9 @@ exports.handler = async function(event) {
         birthday: birthday,
         frequency: frequency,
         notes: notes,
-        active: true
+        active: true,
+        lastTouchpoint: lastTouchpoint,
+        upcomingTouchpoint: upcomingTouchpoint
     })
 
     return {
