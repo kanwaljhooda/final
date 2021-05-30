@@ -80,6 +80,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
             // Fetch the url, wait for a response, store the response in memory
             let response = await fetch(url)
+            console.log(response)
+
+            // 🔥 NOTE TO CONNOR: Tried to display confirmation message w/ below; didn't work :/ 🔥
+            // Display return message
+            // document.querySelector(`.landing-page`).insertAdjacentHTML(`beforeend`, `
+            //   <h1>${toString(response)}</h1>  
+            // `)
 
         })
       // PROCESS CONTACT CREATION VIA API

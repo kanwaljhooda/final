@@ -36,7 +36,7 @@ exports.handler = async function(event) {
     }
 
     else if (frequency == "annually") {
-        let upcomingTouchpoint = upcomingTouchpoint.addDays(365)
+        upcomingTouchpoint = upcomingTouchpoint.addDays(365)
     }
 
     // Establish a connection to firebase in memory
