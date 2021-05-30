@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // START FIND AND DISPLAY LAGGING TOUCHPOINTS
 
           // Build url for API for finding lagging touchpoints
-          let laggingUrl = `/.netlify/functions/find_lagging?userId=${user.uid}`
+          let laggingUrl = `/.netlify/functions/retrieve_contacts?userId=${user.uid}`
 
           // Fetch the url, wait for a response, store the response in memory
           let laggingTouchpoints = await fetch(laggingUrl)

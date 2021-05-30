@@ -30,7 +30,7 @@ exports.handler = async function(event) {
         let email = contact.email
         let phone = contact.phone
         let birthday = contact.birthday
-        let frequency = contact.touchpointFrequency
+        let frequency = contact.frequency
         let notes = contact.notes
         let active = contact.active
 
