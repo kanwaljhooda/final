@@ -65,15 +65,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 </h1>  
                 <div class="flex">
                   <div class="w-1/2">
-                    <h2 class="text-2xl py-1">${laggingContact.email} ${laggingContact.phone}</h2>
-                    <p class="font-bold text-gray-600">${laggingContact.birthday}</p>
-                    <p class="font-bold text-gray-600">${laggingContact.frequency}</p>
+                    <h2 class="text-2xl py-1">📧 ${laggingContact.email}  ☎️${laggingContact.phone}</h2>
+                    <p class="font-bold text-gray-600">🎂 ${laggingContact.birthday}</p>
+                    <p class="font-bold text-gray-600">⏲️ ${laggingContact.frequency}</p>
                   </div>
                 </div>
                 <div class="mt-4 flex">
                   <div>
                     <div class="text-sm font-bold text-gray-600">NOTES</div>
-                      <p>${laggingContact.notes}</p>      
+                      <p>📝 ${laggingContact.notes}</p>      
                     </div>
                   </div>
               </div>
