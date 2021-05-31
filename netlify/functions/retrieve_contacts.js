@@ -16,7 +16,10 @@ exports.handler = async function(event) {
     let returnValue = []
     
     // Retrieve all contacts, wait for it to return
-    let contactsQuery = await db.collection(`contacts`).where(`userId`, `==`, userId).get()
+    let contactsQuery = await db.collection(`contacts`)
+            .where(`userId`, `==`, userId)
+            // .orderBy(`name`) ---> TRIED TO ORDER CONTACTS BY NAME BUT DIDN'T WORK
+            .get()
 
     let contacts = contactsQuery.docs
     // console.log(contacts)
@@ -26,6 +29,7 @@ exports.handler = async function(event) {
         // let contactId = contacts[i].id
         let contact = contacts[i].data()
 
+        let contactId = contacts[i].id
         let name = contact.name
         let email = contact.email
         let phone = contact.phone
@@ -36,6 +40,7 @@ exports.handler = async function(event) {
 
         // Create contact object
         let contactObject = {
+            contactId: contactId,
             name : name,
             email : email,
             phone : phone,

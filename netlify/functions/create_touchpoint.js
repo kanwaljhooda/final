@@ -19,8 +19,14 @@ exports.handler = async function(event) {
     let method = event.queryStringParameters.method
     let notes = event.queryStringParameters.notes
     
-    let lastTouchpoint = date
-    let upcomingTouchpoint = lastTouchpoint  
+    console.log(date)
+    
+    let lastTouchpoint = new Date(date)
+    let offset = lastTouchpoint.getTimezoneOffset()
+    console.log(offset)
+    let upcomingTouchpoint = lastTouchpoint
+
+    console.log(upcomingTouchpoint)
     
 
     // Establish a connection to firebase in memory
@@ -32,17 +38,17 @@ exports.handler = async function(event) {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         userId: userId,
         contactId: contactId,
-        date: date,
+        date: new Date(date),
         method: method,
         notes: notes,        
     })
 
-    let contactRecord = await db.collection(`contacts`).where(`contactId`, `==`, contactId).get()
+    let contactRecord = await db.collection(`contacts`).doc(contactId).get()
 
-    let contact = contactRecord.docs
-
-    let contactInfo = contact[0].data
+    let contactInfo = contactRecord.data()
     let frequency = contactInfo.frequency
+
+    console.log(frequency)
 
     if (frequency == "weekly") {
         upcomingTouchpoint = upcomingTouchpoint.addDays(7)
@@ -57,18 +63,20 @@ exports.handler = async function(event) {
     }
 
     else if (frequency == "annually") {
-        let upcomingTouchpoint = upcomingTouchpoint.addDays(365)
+        upcomingTouchpoint = upcomingTouchpoint.addDays(365)
     }
 
-    await db.collection(`touchpoints`).doc(contactId).update({
-        lastTouchpoint: lastTouchpoint,
-        upcomingTouchpoint: upcomingTouchpoint,        
+    console.log(upcomingTouchpoint.toString())
+
+    await db.collection(`contacts`).doc(contactId).update({
+        lastTouchpoint: lastTouchpoint.toString(),
+        upcomingTouchpoint: upcomingTouchpoint.toString(),        
     })
 
     return {
         statusCode: 200,
         // 🔥 NOTE TO CONNOR: Can't figure out why the string below won't display at the end :/ 🔥
-        body: `Touchpoint with ${contactInfo.name} on ${date} has been added!`
+        // body: `Touchpoint with ${contactInfo.name} on ${date} has been added!`
     }
 }
 
