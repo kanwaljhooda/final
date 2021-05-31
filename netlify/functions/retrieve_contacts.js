@@ -18,6 +18,7 @@ exports.handler = async function(event) {
     // Retrieve all contacts, wait for it to return
     let contactsQuery = await db.collection(`contacts`)
             .where(`userId`, `==`, userId)
+            .where(`active`,`==`, true)
             // .orderBy(`name`) ---> TRIED TO ORDER CONTACTS BY NAME BUT DIDN'T WORK
             .get()
 

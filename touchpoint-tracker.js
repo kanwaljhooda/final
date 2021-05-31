@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       document.querySelector(`.landing-page-title`).insertAdjacentHTML(`afterbegin`,`
         <h1 class="text-center w-1/2 mx-auto capitalize font-bold text-4xl text-white bg-green-700 rounded px-4 py-2">
-          Hey, ${user.displayName}! <br> Welcome to Contact Keeper
+          Hey, ${user.displayName}! <br> Welcome to the Contact Tracker
         </h1>
         <h2 class="m-10 text-xl">
           Below you will find the contacts that are next up (as well as those that you're behind on!)
@@ -82,6 +82,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
                     <span>Actions:</span>
                   </h1>
                   <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-700 rounded px-4 py-2 ">Add Touchpoint</button>
+                  <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-700 rounded px-4 py-2 ">Stop Tracking</button>
               </div>
             </div>
             `
@@ -100,6 +101,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 document.location.href = `add-touchpoint.html?contactId=${laggingContact.contactId}&userId=${user.uid}`
 
             })
+
+            // Get a reference to the stop tracking button
+            let retireContact = document.querySelector(`#retire-${laggingContact.contactId}`)
+
+                // Handle the button
+                retireContact.addEventListener(`click`, async function(event){
+
+                  // Build URL for retire API
+                  let retireContactUrl = `/.netlify/functions/retire_contact?contactId=${laggingContact.contactId}`
+
+                  // Run API to deactivate contact
+                  let retireResponse = await fetch(retireContactUrl)
+
+                  // Refresh the page
+                  location.reload()
+
+                })
+
 
           }
 
