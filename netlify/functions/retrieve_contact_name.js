@@ -20,12 +20,10 @@ exports.handler = async function(event) {
             .doc(contactId)
             .get()
 
+    // Retrieve and store contact's name
     let contact = contactsQuery.data()
-    // console.log(contacts)
-
     let contactName = contact.name  
-    console.log(contactName)
-
+    
     // Return the standard response
     return {
     statusCode: 200,

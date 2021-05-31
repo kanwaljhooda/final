@@ -41,6 +41,10 @@ exports.handler = async function(event) {
 
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
+
+    // Convert dates to local strings
+    lastTouchpoint = lastTouchpoint.toLocaleString()
+    upcomingTouchpoint = upcomingTouchpoint.toLocaleString()
     
     // Create a new contact, wait for it to return
 

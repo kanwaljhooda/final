@@ -19,7 +19,6 @@ exports.handler = async function(event) {
     // Return the standard response
     return {
     statusCode: 200,
-    body: JSON.stringify(`contactName`)
     }
 
 }

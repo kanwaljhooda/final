@@ -95,19 +95,48 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 //  Handle the button 
                 addTouchpoint.addEventListener(`click`, function(event) {
                 
-                console.log(laggingContact.contactId)
-                console.log(user.uid)
-                
-                  // Redirect to the HTML
+                // Prevent default
+                event.preventDefault()
+
+                // Redirect to the HTML
                 document.location.href = `add-touchpoint.html?contactId=${laggingContact.contactId}&userId=${user.uid}`
 
             })
 
+            // Get a reference to the snooze button
+            let snoozeContact = document.querySelector(`#snooze-${laggingContact.contactId}`)
+
+            // console.log(snoozeContact)
+
+                // Handle the button
+                snoozeContact.addEventListener(`click`, async function(event){
+                              
+                // Prevent default
+                event.preventDefault()
+
+                console.log(`${laggingContact.contactId}`)
+
+                // Build URL for retire API
+                let snoozeContactUrl = `/.netlify/functions/snooze_contact?contactId=${laggingContact.contactId}`
+
+                // Run API to deactivate contact
+                let snoozeResponse = await fetch(snoozeContactUrl)
+
+                // Refresh the page
+                // location.reload()
+
+                })
+            
             // Get a reference to the stop tracking button
             let retireContact = document.querySelector(`#retire-${laggingContact.contactId}`)
 
+            // console.log(retireContact)
+
                 // Handle the button
                 retireContact.addEventListener(`click`, async function(event){
+
+                  // Prevent default
+                  event.preventDefault()
 
                   // Build URL for retire API
                   let retireContactUrl = `/.netlify/functions/retire_contact?contactId=${laggingContact.contactId}`
@@ -120,6 +149,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
                 })
 
+            
 
           }
 
