@@ -35,15 +35,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
       const contactId = urlParams.get('contactId')
       const userId = urlParams.get('userId')
 
+      let conactRetrievalUrl = `/.netlify/functions/retrieve_contact_name?contactId=${contactId}`
+
+      let contactName = await fetch(conactRetrievalUrl)
+            
+      let contact = await contactName.text()
+      // console.log(contact)
+
       // console.log(contactId)
 
       // console.log(queryString)
         
       document.querySelector(`.landing-page`).innerHTML = `
+        <h1>Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}</h1>
+      
         <form class="items-center">
-            <label class="block mt-4 font-semibold" for="name">Contact Name</label>
-            <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="name" name="name">
-
             <label class="block mt-4 font-semibold" for="date">Touchpoint Date</label>
             <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="date" name="date">
 
