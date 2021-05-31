@@ -81,8 +81,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
                   <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
                     <span>Actions:</span>
                   </h1>
-                  <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-700 rounded px-4 py-2 ">Add Touchpoint</button>
-                  <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-700 rounded px-4 py-2 ">Stop Tracking</button>
+                  <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 ">Mark Complete</button>
+                  <button id = "snooze-${laggingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 ">Snooze</button>
+                  <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 ">Stop Tracking</button>
               </div>
             </div>
             `
