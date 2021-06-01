@@ -71,7 +71,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.lagging-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,`
-            <h1> Lagging Contacts </h1>
             <div class=" p-2 m-8 flex border-2 border-black rounded">
               <div class="p-4 bg-gray-200 rounded w-1/2 text-left">
                 <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
@@ -190,7 +189,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.upcoming-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,`
-            <h1> Upcoming Contacts </h1>
             <div class=" p-2 m-8 flex border-2 border-black rounded">
               <div class="p-4 bg-gray-200 rounded w-1/2 text-left">
                 <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
