@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
               })
       
           // Build url for API for finding lagging touchpoints
-          let laggingUrl = `/.netlify/functions/retrieve_contacts?userId=${user.uid}`
+          let laggingUrl = `/.netlify/functions/find_lagging?userId=${user.uid}`
 
           // Fetch the url, wait for a response, store the response in memory
           let laggingTouchpoints = await fetch(laggingUrl)
@@ -70,6 +70,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.lagging-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,`
+            <h1> Lagging Contacts </h1>
             <div class=" p-2 m-8 flex border-2 border-black rounded">
               <div class="p-4 bg-gray-200 rounded w-1/2 text-left">
                 <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
@@ -163,9 +164,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
             
 
-          }
-
-          
+          }          
 
       // END FIND AND DISPLAY LAGGING TOUCHPOINTS
 
