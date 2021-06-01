@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Touchpoint Tracker</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touchpoint</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
+
 <body>
-    
+  
   <!-- MAIN PAGE -->
-  <div class="m-5 text-sm text-right sign-in-or-sign-out">
-    <!-- UPDATED BY THE JS FILE FOR SIGNED IN USERS  -->          
+  
+  <h1 class="text-center m-8 capitalize font-bold text-2xl text-green-500">TOUCHPOINT</h1>
+
+  <div class="px-16 md:flex items-center bg-gray-100 landing-page"> 
+       <!-- UPDATED BY THE JS FILE FOR SIGNED IN USERS  -->
   </div>
   
-  <div class="landing-page-title">
-    <!-- UPDATED BY THE JS FILE FOR SIGNED IN USERS  -->
-  </div>
-  
-  <div class="lagging-contacts container text-center mx-auto">
-    <!-- UPDATED BY THE JS FILE FOR SIGNED IN USERS  -->
-  </div>
-
-  <div class="flex py-8 md:px-32 px-0 md:w-1/2 w-full mx-auto">
-    <div class="flex items-center"></div>
-      
-    <!-- <h1 class="text-center m-8 capitalize font-bold text-2xl text-green-500">TOUCHPOINT</h1> -->
-
+  <div class="py-8 md:px-32 px-0 md:w-1/2 w-full mx-auto">
+  <div class="flex items-center">
     
+  
+  <div class="ml-auto text-sm sign-in-or-sign-out"></div>
 
   </div>
 
   <!-- MAIN PAGE -->
 
   <!-- FIREBASE CODE -->
-
+ 
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -55,10 +50,12 @@
     } // replace
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+ 
   </script>
-  <script src="touchpoint-tracker.js"></script>
+  <script src="index-old.js"></script>
 
   <!-- FIREBASE CODE -->
 
 </body>
+
 </html>

@@ -52,6 +52,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <input class="p-2 mt-2 w-96 h-52 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="notes" name="notes">
 
             <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-contact">Add Contact</button>
+
+            <button class="block mt-4 text-white bg-yellow-700 rounded px-4 py-2 return-to-tracker">Return to Tracker</button>
         </form>`
 
       // UPDATE LANDING PAGE
@@ -90,6 +92,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         })
       // PROCESS CONTACT CREATION VIA API
+
+      // RETURN TO TRACKER
+
+        // Get a reference to the Return to Tracker button
+        let returnToTrackerButton = document.querySelector(`.return-to-tracker`)
+        
+        // Add event listener to button
+        returnToTrackerButton.addEventListener(`click`, async function(event){
+
+            // Ignore default behavior
+            event.preventDefault()
+
+            // Redirect to the tracker HTML
+            document.location.href = `index.html`            
+
+        })
+      // RETURN TO TRACKER
+
 
   
     } else {
