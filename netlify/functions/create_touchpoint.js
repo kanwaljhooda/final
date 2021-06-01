@@ -19,15 +19,11 @@ exports.handler = async function(event) {
     let method = event.queryStringParameters.method
     let notes = event.queryStringParameters.notes
     
-    console.log(date)
+    console.log(date.toLocaleString())
     
-    let lastTouchpoint = new Date(date)
-    let offset = lastTouchpoint.getTimezoneOffset()
-    console.log(offset)
+    let lastTouchpoint = new Date(date.toLocaleString())
     let upcomingTouchpoint = lastTouchpoint
-
-    console.log(upcomingTouchpoint)
-    
+      
 
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
@@ -38,7 +34,7 @@ exports.handler = async function(event) {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         userId: userId,
         contactId: contactId,
-        date: new Date(date),
+        date: new Date(date.toLocaleString()),
         method: method,
         notes: notes,        
     })
@@ -65,9 +61,12 @@ exports.handler = async function(event) {
     else if (frequency == "annually") {
         upcomingTouchpoint = upcomingTouchpoint.addDays(365)
     }
+    
+    // Convert dates to local strings
+    lastTouchpoint = lastTouchpoint.toLocaleString()
+    upcomingTouchpoint = upcomingTouchpoint.toLocaleString()
 
-    console.log(upcomingTouchpoint.toString())
-
+    // Update last and upcoming touchpoint dates for the contact
     await db.collection(`contacts`).doc(contactId).update({
         lastTouchpoint: lastTouchpoint.toString(),
         upcomingTouchpoint: upcomingTouchpoint.toString(),        

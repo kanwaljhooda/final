@@ -123,7 +123,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 let snoozeResponse = await fetch(snoozeContactUrl)
 
                 // Refresh the page
-                // location.reload()
+                location.reload()
 
                 })
             

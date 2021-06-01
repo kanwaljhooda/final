@@ -27,10 +27,7 @@ exports.handler = async function(event) {
     // Retrieve and store contact's frequency and upcoming touchpoint
     let contact = contactsQuery.data()
     let frequency = contact.frequency
-    let upcomingTouchpoint = new Date(contact.upcomingTouchpoint)
-    // let lastTouchpoint = contact.lastTouchpoint
-
-    // upcomingTouchpoint = upcomingTouchpoint.seconds()
+    let upcomingTouchpoint = new Date(contact.upcomingTouchpoint)    
     
     
     // Update stored upcomingTouchpoint based on frequency
@@ -49,6 +46,9 @@ exports.handler = async function(event) {
     else if (frequency == "annually") {
         upcomingTouchpoint = upcomingTouchpoint.addDays(365)
     }
+
+    // Convert date to local string
+    upcomingTouchpoint = upcomingTouchpoint.toLocaleString()
 
     // Update record with new upcomingTouchpoint
     await db.collection(`contacts`).doc(contactId).update({
