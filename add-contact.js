@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // UPDATE LANDING PAGE
 
         document.querySelector(`.landing-page`).innerHTML = `
-        <form class="items-center">
+        <form class="mx-auto">
             <label class="block mt-4 font-semibold" for="name">Contact Name</label>
             <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="name" name="name">
 

@@ -24,8 +24,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
       // END CODE FOR SIGNING OUT
   
-      // START UPDATE LANDING PAGE TITLE
-
+      // START UPDATE LANDING PAGE ON SIGN IN
+      
+      // Update header and description
       document.querySelector(`.landing-page-title`).insertAdjacentHTML(`afterbegin`,`
         <h1 class="text-center w-1/2 mx-auto capitalize font-bold text-4xl text-white bg-green-700 rounded px-4 py-2">
           Hey, ${user.displayName}! <br> Welcome to the Contact Tracker
@@ -34,7 +35,20 @@ firebase.auth().onAuthStateChanged(async function(user) {
           Below you will find the contacts that are next up (as well as those that you're behind on!)
           Check out your notes and their contact info, reach out, and click the corresponding button to update your tracker!
         </h2>
-        <button id = "add-contact-${user.uid}" class="block mt-4 text-center text-white bg-green-700 rounded px-4 py-2 ">Add Contact</button>
+        <button id = "add-contact-${user.uid}" class="block mt-4 mx-auto text-center text-white bg-blue-700 rounded px-4 py-2 ">Add Contact</button>
+        `)
+
+      // Update lagging and upcoming contacts headers
+      document.querySelector(`.lagging-contacts`).insertAdjacentHTML(`afterbegin`,`
+        <h1 class="underline mt-4">
+          Lagging Contacts:
+        </h1>
+        `)
+
+      document.querySelector(`.upcoming-contacts`).insertAdjacentHTML(`afterbegin`,`
+        <h1 class="underline mt-4">
+          Upcoming Contacts:
+        </h1>
         `)
 
       // Get reference to add-contact button
@@ -48,7 +62,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       })
       
-      // END UPDATE LANDING PAGE TITLE
+      // END UPDATE LANDING PAGE ON SIGN IN
 
       // START FIND AND DISPLAY LAGGING TOUCHPOINTS
          

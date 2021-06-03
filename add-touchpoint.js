@@ -47,9 +47,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // console.log(queryString)
         
       document.querySelector(`.landing-page`).innerHTML = `
-        <h1>Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}</h1>
+        <div class="mx-auto">Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}!<div>
       
-        <form class="items-center">
+        <form class="items-center mx-auto" action="index.html">
             <label class="block mt-4 font-semibold" for="date">Touchpoint Date</label>
             <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="date" name="date">
 
