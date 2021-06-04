@@ -6,8 +6,7 @@ let firebase = require(`./firebase`)
 exports.handler = async function(event) {
 
     // Get the querystring parameters and store in memory
-    let userId = event.queryStringParameters.userId
-    // console.log(userId)
+    let userId = event.queryStringParameters.userId    
 
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
@@ -22,8 +21,7 @@ exports.handler = async function(event) {
             // .orderBy(`name`) ---> TRIED TO ORDER CONTACTS BY NAME BUT DIDN'T WORK
             .get()
 
-    let contacts = contactsQuery.docs
-    // console.log(contacts)
+    let contacts = contactsQuery.docs    
 
     let today = new Date()
     today = today.toLocaleString()
@@ -43,9 +41,7 @@ exports.handler = async function(event) {
         let notes = contact.notes
         let active = contact.active
         let upcomingTouchpoint = contact.upcomingTouchpoint
-
-        console.log(upcomingTouchpoint)
-
+        
         if (upcomingTouchpoint < today) {
 
             // Create contact object

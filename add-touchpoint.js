@@ -24,7 +24,25 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
       // CODE FOR SIGNING OUT
 
-      // CODE FOR RETURN TO TRACKER
+      
+  
+      // UPDATE LANDING PAGE
+
+            
+      const queryString = window.location.search
+      console.log(queryString)
+      const urlParams = new URLSearchParams(queryString)
+
+      const contactId = urlParams.get('contactId')
+      const userId = urlParams.get('userId')
+
+      if (queryString.length == 0) {
+
+        document.querySelector(`.landing-page`).insertAdjacentHTML(`afterbegin`,
+        `<h2 class="text-center">Please retun to the tracker and select "Mark Complete" for a contact to log a touchpoint with them</h2>
+        <button class="block mt-4 mx-auto text-center text-white bg-yellow-700 rounded px-4 py-2 return-to-tracker">Return to Tracker</button>
+        `)
+        // CODE FOR RETURN TO TRACKER
   
             
           // Get a reference to the sign out button
@@ -35,30 +53,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
               
             // Redirect to the home page
             document.location.href = `index.html`
-            
+
           })     
   
-      // CODE FOR RETURN TO TRACKER
-  
-      // UPDATE LANDING PAGE
+        // CODE FOR RETURN TO TRACKER
 
-      // imports.handler = async function(event) {
-        // let contactId = event.queryStringParameters.contactId
-       
-      const queryString = window.location.search
-      const urlParams = new URLSearchParams(queryString)
+        
 
-      const contactId = urlParams.get('contactId')
-      const userId = urlParams.get('userId')
-
-      if (contactId.length > 0) {
+      } else if (contactId.length > 0) {
       
           let conactRetrievalUrl = `/.netlify/functions/retrieve_contact_name?contactId=${contactId}`
 
           let contactName = await fetch(conactRetrievalUrl)
                 
           let contact = await contactName.text()
-          
+          console.log(contact)
                   
           document.querySelector(`.landing-page`).innerHTML = `
             <div class="mx-auto">Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}!<div>
@@ -80,11 +89,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
                 <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-touchpoint">Add Touchpoint</button>
             </form>`
-      }
-
-      else {
-        location.replace("/index.html")
-      }
+            
 
       // UPDATE LANDING PAGE
 
@@ -117,6 +122,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             location.replace("/index.html")
 
         })
+      }
 
         // return {
         //   statusCode: 200,
