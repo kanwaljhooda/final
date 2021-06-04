@@ -23,50 +23,73 @@ firebase.auth().onAuthStateChanged(async function(user) {
           })     
   
       // CODE FOR SIGNING OUT
+
+      
   
       // UPDATE LANDING PAGE
 
-      // imports.handler = async function(event) {
-        // let contactId = event.queryStringParameters.contactId
-       
+            
       const queryString = window.location.search
+      console.log(queryString)
       const urlParams = new URLSearchParams(queryString)
 
       const contactId = urlParams.get('contactId')
       const userId = urlParams.get('userId')
 
-      let conactRetrievalUrl = `/.netlify/functions/retrieve_contact_name?contactId=${contactId}`
+      if (queryString.length == 0) {
 
-      let contactName = await fetch(conactRetrievalUrl)
+        document.querySelector(`.landing-page`).insertAdjacentHTML(`afterbegin`,
+        `<h2 class="text-center">Please retun to the tracker and select "Mark Complete" for a contact to log a touchpoint with them</h2>
+        <button class="block mt-4 mx-auto text-center text-white bg-yellow-700 rounded px-4 py-2 return-to-tracker">Return to Tracker</button>
+        `)
+        // CODE FOR RETURN TO TRACKER
+  
             
-      let contact = await contactName.text()
-      // console.log(contact)
+          // Get a reference to the sign out button
+          let returnToTracker = document.querySelector(`.return-to-tracker`)
+  
+          //  Handle the sign out button 
+          returnToTracker.addEventListener(`click`, function(event) {         
+              
+            // Redirect to the home page
+            document.location.href = `index.html`
 
-      // console.log(contactId)
+          })     
+  
+        // CODE FOR RETURN TO TRACKER
 
-      // console.log(queryString)
         
-      document.querySelector(`.landing-page`).innerHTML = `
-        <div class="mx-auto">Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}!<div>
+
+      } else if (contactId.length > 0) {
       
-        <form>
-            <label class="block mt-4 font-semibold" for="date">Touchpoint Date</label>
-            <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="date" name="date">
+          let conactRetrievalUrl = `/.netlify/functions/retrieve_contact_name?contactId=${contactId}`
 
-            <label class="block mt-4 font-semibold" for="method">Method</label>
-            <select class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="method" name="method">
-                <option value="email">Email</option>
-                <option value="text">Text</option>
-                <option value="phone call">Phone Call</option>
-                <option value="in person">Met in person</option>
-            </select>
+          let contactName = await fetch(conactRetrievalUrl)
+                
+          let contact = await contactName.text()
+          console.log(contact)
+                  
+          document.querySelector(`.landing-page`).innerHTML = `
+            <div class="mx-auto">Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}!<div>
+          
+            <form>
+                <label class="block mt-4 font-semibold" for="date">Touchpoint Date</label>
+                <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="date" name="date">
 
-            <label class="block mt-4 font-semibold" for="commit">Notes</label>
-            <input class="p-2 mt-2 w-96 h-52 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="notes" name="notes">
+                <label class="block mt-4 font-semibold" for="method">Method</label>
+                <select class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="method" name="method">
+                    <option value="email">Email</option>
+                    <option value="text">Text</option>
+                    <option value="phone call">Phone Call</option>
+                    <option value="in person">Met in person</option>
+                </select>
 
-            <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-touchpoint">Add Touchpoint</button>
-        </form>`
+                <label class="block mt-4 font-semibold" for="commit">Notes</label>
+                <input class="p-2 mt-2 w-96 h-52 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="notes" name="notes">
 
+                <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-touchpoint">Add Touchpoint</button>
+            </form>`          
+            
       // UPDATE LANDING PAGE
 
       // PROCESS CONTACT CREATION VIA API
@@ -98,6 +121,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             location.replace("/index.html")
 
         })
+      }
 
         // return {
         //   statusCode: 200,

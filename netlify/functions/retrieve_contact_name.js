@@ -7,8 +7,7 @@ exports.handler = async function(event) {
 
     // Get the querystring parameters and store in memory
     let contactId = event.queryStringParameters.contactId
-    console.log(contactId)
-
+    
     // Establish a connection to firebase in memory
     let db = firebase.firestore()
 
@@ -22,7 +21,8 @@ exports.handler = async function(event) {
 
     // Retrieve and store contact's name
     let contact = contactsQuery.data()
-    let contactName = contact.name  
+    let contactName = contact.name
+    console.log(contactName)  
     
     // Return the standard response
     return {

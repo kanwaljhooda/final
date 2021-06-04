@@ -44,13 +44,9 @@ exports.handler = async function(event) {
         let active = contact.active
         let upcomingTouchpoint = contact.upcomingTouchpoint
 
-        // console.log(upcomingTouchpoint)
         upcomingTouchpointInDateObject = new Date(upcomingTouchpoint)
-        // console.log(upcomingTouchpointInDateObject)
         todayAsDateObject = new Date()
-        // console.log(todayAsDateObject)
-        console.log((upcomingTouchpointInDateObject - todayAsDateObject) / (1000 * 60 * 60 * 24))
-
+        
         dayDifference = (upcomingTouchpointInDateObject - todayAsDateObject) / (1000 * 60 * 60 * 24)
 
         if (dayDifference <= 15 && dayDifference > 0) {
