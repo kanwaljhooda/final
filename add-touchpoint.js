@@ -23,6 +23,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
           })     
   
       // CODE FOR SIGNING OUT
+
+      // CODE FOR RETURN TO TRACKER
+  
+            
+          // Get a reference to the sign out button
+          let returnToTracker = document.querySelector(`.return-to-tracker`)
+  
+          //  Handle the sign out button 
+          returnToTracker.addEventListener(`click`, function(event) {         
+              
+            // Redirect to the home page
+            document.location.href = `index.html`
+            
+          })     
+  
+      // CODE FOR RETURN TO TRACKER
   
       // UPDATE LANDING PAGE
 
