@@ -88,9 +88,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 <input class="p-2 mt-2 w-96 h-52 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="notes" name="notes">
 
                 <button class="block mt-4 text-white bg-green-700 rounded px-4 py-2 add-touchpoint">Add Touchpoint</button>
-            </form>`
+            </form>`          
             
-
       // UPDATE LANDING PAGE
 
       // PROCESS CONTACT CREATION VIA API
