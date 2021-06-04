@@ -41,8 +41,11 @@ exports.handler = async function(event) {
         let notes = contact.notes
         let active = contact.active
         let upcomingTouchpoint = contact.upcomingTouchpoint
+
+        upcomingTouchpointInDateObject = new Date(upcomingTouchpoint)
+        todayAsDateObject = new Date()
         
-        if (upcomingTouchpoint < today) {
+        if (upcomingTouchpointInDateObject < todayAsDateObject) {
 
             // Create contact object
             let contactObject = {
