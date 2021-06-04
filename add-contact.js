@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // UPDATE LANDING PAGE
 
         document.querySelector(`.landing-page`).innerHTML = `
-        <form class="mx-auto">
+        <form class="mx-auto add-contact-form">
             <label class="block mt-4 font-semibold" for="name">Contact Name</label>
             <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="text" id="name" name="name">
 
@@ -84,11 +84,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let response = await fetch(url)
             console.log(response)
 
-            // 🔥 NOTE TO CONNOR: Tried to display confirmation message w/ below; didn't work :/ 🔥
+            // refresh the page
+            // location.reload()
+
             // Display return message
-            // document.querySelector(`.landing-page`).insertAdjacentHTML(`beforeend`, `
-            //   <h1>${toString(response)}</h1>  
-            // `)
+            document.querySelector(`.confirm-added`).innerHTML = `
+            <div class="mx-auto text-center text-green-500 font-bold">
+              Contact added!
+            </div>`
+
+            // Clear form
+            document.querySelector(`.add-contact-form`).reset()
 
         })
       // PROCESS CONTACT CREATION VIA API

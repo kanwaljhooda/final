@@ -49,7 +49,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.querySelector(`.landing-page`).innerHTML = `
         <div class="mx-auto">Tell us about your touchpoint with ${contact.replace(/['"]+/g, '')}!<div>
       
-        <form class="items-center mx-auto" action="https://vibrant-panini-8bdb6d.netlify.app/">
+        <form>
             <label class="block mt-4 font-semibold" for="date">Touchpoint Date</label>
             <input class="p-2 mt-2 w-96 border border-gray-400 rounded focus:outline-none focus:ring-green-700 focus:border-purple-500" type="date" id="date" name="date">
 
@@ -93,6 +93,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
             // Fetch the url, wait for a response, store the response in memory
             let response = await fetch(url)
+
+            // Redirect to home
+            location.replace("/index.html")
 
         })
 

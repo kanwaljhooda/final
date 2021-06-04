@@ -40,13 +40,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // Update lagging and upcoming contacts headers
       document.querySelector(`.lagging-contacts`).insertAdjacentHTML(`afterbegin`,`
-        <h1 class="underline mt-4">
+        <h1 class="underline m-10 mt-4 text-4xl font-extrabold">
           Lagging Contacts:
         </h1>
         `)
 
       document.querySelector(`.upcoming-contacts`).insertAdjacentHTML(`afterbegin`,`
-        <h1 class="underline mt-4">
+        <h1 class="underline m-10 mt-4 text-4xl font-extrabold">
           Upcoming Contacts:
         </h1>
         `)
@@ -108,9 +108,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
                   <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
                     <span>Actions:</span>
                   </h1>
-                  <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 ">Mark Complete</button>
-                  <button id = "snooze-${laggingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 ">Snooze</button>
-                  <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 ">Stop Tracking</button>
+                  <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 w-60">✔️ Mark Complete</button>
+                  <button id = "snooze-${laggingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 w-60">😴 Snooze</button>
+                  <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 w-60">❌ Stop Tracking</button>
               </div>
             </div>
             `
@@ -226,9 +226,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
                   <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
                     <span>Actions:</span>
                   </h1>
-                  <button id = "add-touchpoint-${upcomingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 ">Mark Complete</button>
-                  <button id = "snooze-${upcomingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 ">Snooze</button>
-                  <button id = "retire-${upcomingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 ">Stop Tracking</button>
+                  <button id = "add-touchpoint-${upcomingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 w-60">✔️ Mark Complete</button>
+                  <button id = "snooze-${upcomingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 w-60">😴 Snooze</button>
+                  <button id = "retire-${upcomingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 w-60">❌ Stop Tracking</button>
               </div>
             </div>
             `
