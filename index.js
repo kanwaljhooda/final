@@ -28,27 +28,27 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
       // Update header and description
       document.querySelector(`.landing-page-title`).insertAdjacentHTML(`afterbegin`,`
-        <h1 class="text-center w-1/2 mx-auto capitalize font-bold text-4xl text-white bg-green-700 rounded px-4 py-2">
+        <div class="text-center w-1/2 mx-auto capitalize font-bold text-4xl text-white bg-green-700 rounded px-4 py-2">
           Hey, ${user.displayName}! <br> Welcome to the Contact Tracker
-        </h1>
-        <h2 class="m-10 text-xl">
+        </div>
+        <div class="m-10 text-xl">
           Below you will find the contacts that are next up (as well as those that you're behind on!)
           Check out your notes and their contact info, reach out, and click the corresponding button to update your tracker!
-        </h2>
+        </div>
         <button id = "add-contact-${user.uid}" class="block mt-4 mx-auto text-center text-white bg-blue-700 rounded px-4 py-2 ">Add Contact</button>
         `)
 
       // Update lagging and upcoming contacts headers
       document.querySelector(`.lagging-contacts`).insertAdjacentHTML(`afterbegin`,`
-        <h1 class="underline m-10 mt-4 text-4xl font-extrabold">
+        <div class="underline m-10 mt-4 text-4xl font-extrabold">
           Lagging Contacts:
-        </h1>
+        </div>
         `)
 
       document.querySelector(`.upcoming-contacts`).insertAdjacentHTML(`afterbegin`,`
-        <h1 class="underline m-10 mt-4 text-4xl font-extrabold">
+        <div class="underline m-10 mt-4 text-4xl font-extrabold">
           Upcoming Contacts:
-        </h1>
+        </div>
         `)
 
       // Get reference to add-contact button
@@ -85,29 +85,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.lagging-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,`
-            <div class=" p-2 m-8 flex border-2 border-black rounded">
-              <div class="p-4 bg-gray-200 rounded w-1/2 text-left">
-                <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
+            <div class=" p-2 m-8 md:flex border-2 border-black rounded">
+              <div class="p-4 bg-gray-200 rounded md:w-2/3 text-left">
+                <div class="rounded-xl underline text-2xl bg-clip-text text-left">
                   <span>${laggingContact.name}</span>
-                </h1>  
+                </div>  
                 <div class="flex">
-                  <div class="w-1/2">
-                    <h2 class="text-2xl py-1">📧 ${laggingContact.email}  ☎️${laggingContact.phone}</h2>
-                    <p class="font-bold text-gray-600">🎂 ${laggingContact.birthday}</p>
-                    <p class="font-bold text-gray-600">⏲️ ${laggingContact.frequency}</p>
+                  <div>
+                    <div class="text-2xl py-1">📧 ${laggingContact.email}</div>
+                    <div class="test-2xl py-1">☎️${laggingContact.phone}</div>
+                    <div class="font-bold text-gray-600">🎂 ${laggingContact.birthday}</div>
+                    <div class="font-bold text-gray-600">⏲️ ${laggingContact.frequency}</div>
                   </div>
                 </div>
                 <div class="mt-4 flex">
                   <div>
                     <div class="text-sm font-bold text-gray-600">NOTES</div>
-                      <p>📝 ${laggingContact.notes}</p>      
+                      <div>📝 ${laggingContact.notes}</div>      
                     </div>
                   </div>
               </div>
-              <div class="m-4 w-1/2 text-right">
-                  <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
+              <div class="m-4 md:w-1/3 text-right">
+                  <div class="rounded-xl underline text-2xl bg-clip-text text-left">
                     <span>Actions:</span>
-                  </h1>
+                  </div>
                   <button id = "add-touchpoint-${laggingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 w-60">✔️ Mark Complete</button>
                   <button id = "snooze-${laggingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 w-60">😴 Snooze</button>
                   <button id = "retire-${laggingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 w-60">❌ Stop Tracking</button>
@@ -203,29 +204,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let element = document.querySelector(`.upcoming-contacts`)
 
             element.insertAdjacentHTML(`beforeend`,`
-            <div class=" p-2 m-8 flex border-2 border-black rounded">
-              <div class="p-4 bg-gray-200 rounded w-1/2 text-left">
-                <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
+            <div class=" p-2 m-8 md:flex border-2 border-black rounded">
+              <div class="p-4 bg-gray-200 rounded md:w-2/3 text-left">
+                <div class="rounded-xl underline text-2xl bg-clip-text text-left">
                   <span>${upcomingContact.name}</span>
-                </h1>  
+                </div>  
                 <div class="flex">
-                  <div class="w-1/2">
-                    <h2 class="text-2xl py-1">📧 ${upcomingContact.email}  ☎️${upcomingContact.phone}</h2>
-                    <p class="font-bold text-gray-600">🎂 ${upcomingContact.birthday}</p>
-                    <p class="font-bold text-gray-600">⏲️ ${upcomingContact.frequency}</p>
+                  <div>
+                    <div class="text-2xl py-1">📧 ${upcomingContact.email}</div>
+                    <div class="text-2xl py-1">☎️${upcomingContact.phone}</div>
+                    <div class="font-bold text-gray-600">🎂 ${upcomingContact.birthday}</div>
+                    <div class="font-bold text-gray-600">⏲️ ${upcomingContact.frequency}</div>
                   </div>
                 </div>
                 <div class="mt-4 flex">
                   <div>
                     <div class="text-sm font-bold text-gray-600">NOTES</div>
-                      <p>📝 ${upcomingContact.notes}</p>      
+                      <div>📝 ${upcomingContact.notes}</div>      
                     </div>
                   </div>
               </div>
-              <div class="m-4 w-1/2 text-right">
-                  <h1 class="rounded-xl underline text-2xl bg-clip-text text-left">
+              <div class="m-4 md:w-1/3 text-right">
+                  <div class="rounded-xl underline text-2xl bg-clip-text text-left">
                     <span>Actions:</span>
-                  </h1>
+                  </div>
                   <button id = "add-touchpoint-${upcomingContact.contactId}" class="block mt-4 text-white bg-green-400 rounded px-4 py-2 w-60">✔️ Mark Complete</button>
                   <button id = "snooze-${upcomingContact.contactId}" class="block mt-4 text-white bg-yellow-400 rounded px-4 py-2 w-60">😴 Snooze</button>
                   <button id = "retire-${upcomingContact.contactId}" class="block mt-4 text-white bg-red-400 rounded px-4 py-2 w-60">❌ Stop Tracking</button>
